@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1676259170 source:d:\c++\game\golfgame\ball.cpp
+
+1676259187 source:d:\c++\game\golfgame\entity.cpp
+
+1584205420 source:d:\c++\game\golfgame\main.cpp
+	<iostream>
+
+1676259459 source:d:\c++\game\golfgame\tile.cpp
+
+1676294292 source:d:\c++\game\golfgame\renderwindow.cpp
+
+1676294911 source:d:\c++\game\golfgame\math.cpp
+
+1676299358 source:d:\c++\game\golfgame\hole.cpp
+
