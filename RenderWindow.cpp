@@ -62,10 +62,71 @@ void RenderWindow::render(int x, int y, SDL_Texture* p_tex)
 }
 
 
+void RenderWindow::render(Entity& p_entity)
+{
+	SDL_Rect src;
+	src.x = p_entity.getCurrentFrame().x;
+	src.y = p_entity.getCurrentFrame().y;
+	src.w = p_entity.getCurrentFrame().w;
+	src.h = p_entity.getCurrentFrame().h;
 
+	SDL_Rect dst;
+	dst.x = p_entity.getPos().x + (p_entity.getCurrentFrame().w - p_entity.getCurrentFrame().w*p_entity.getScale().x)/2;
+	dst.y = p_entity.getPos().y + (p_entity.getCurrentFrame().h - p_entity.getCurrentFrame().h*p_entity.getScale().y)/2;
+	dst.w = p_entity.getCurrentFrame().w*p_entity.getScale().x;
+	dst.h = p_entity.getCurrentFrame().h*p_entity.getScale().y;
 
+	SDL_RenderCopyEx(renderer, p_entity.getTex(), &src, &dst, p_entity.getAngle(), 0, SDL_FLIP_NONE);
+}
+
+void RenderWindow::render(float p_x, float p_y, const char* p_text, TTF_Font* font, SDL_Color textColor)
+{
+		SDL_Surface* surfaceMessage = TTF_RenderText_Blended( font, p_text, textColor);
+		SDL_Texture* message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+
+		SDL_Rect src;
+		src.x = 0;
+		src.y = 0;
+		src.w = surfaceMessage->w;
+		src.h = surfaceMessage->h;
+
+		SDL_Rect dst;
+		dst.x = p_x;
+		dst.y = p_y;
+		dst.w = src.w;
+		dst.h = src.h;
+
+		SDL_RenderCopy(renderer, message, &src, &dst);
+		SDL_FreeSurface(surfaceMessage);
+	 	SDL_DestroyTexture(message);
+}
+
+void RenderWindow::renderCenter(float p_x, float p_y, const char* p_text, TTF_Font* font, SDL_Color textColor)
+{
+		SDL_Surface* surfaceMessage = TTF_RenderText_Blended( font, p_text, textColor);
+		SDL_Texture* message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+
+		SDL_Rect src;
+		src.x = 0;
+		src.y = 0;
+		src.w = surfaceMessage->w;
+		src.h = surfaceMessage->h;
+
+		SDL_Rect dst;
+		dst.x = 972/2  + p_x;
+		dst.y = 478/2  + p_y;
+		dst.w = src.w;
+		dst.h = src.h;
+
+		SDL_RenderCopy(renderer, message, &src, &dst);
+		SDL_FreeSurface(surfaceMessage);
+		SDL_DestroyTexture(message);
+}
 
 void RenderWindow::display()
 {
 	SDL_RenderPresent(renderer);
 }
+
+
+
