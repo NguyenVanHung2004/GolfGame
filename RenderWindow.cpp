@@ -123,6 +123,8 @@ void RenderWindow::renderCenter(float p_x, float p_y, const char* p_text, TTF_Fo
 		SDL_DestroyTexture(message);
 }
 
+
+
 void RenderWindow::display()
 {
 	SDL_RenderPresent(renderer);

@@ -17,7 +17,12 @@ Boom::Boom(Vector2f p_pos, SDL_Texture* p_tex)
 
 
 }
+Explosion::Explosion(Vector2f p_pos, SDL_Texture* p_tex)
+:Entity(p_pos, p_tex)
+{
 
+
+}
 
 
 

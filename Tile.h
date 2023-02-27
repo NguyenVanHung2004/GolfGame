@@ -21,3 +21,12 @@ class Boom : public Entity
 
     private:
 };
+
+class Explosion : public Entity
+{
+    public:
+    Explosion(Vector2f p_pos, SDL_Texture* p_tex);
+
+    private:
+};
+
